@@ -1,0 +1,31 @@
+//Rotate a doubly Linkedlsit by Nth node
+
+// 1 2 3 4 5 
+// 3 4 5 1 2 
+
+if(head == 0)
+{
+    return head;
+    
+}
+Node*current= head;
+int count=1;
+
+while(count< n && current!=NULL)
+{
+    current=current->next;
+    count++;
+}
+
+Node* nthNode= current;
+while(current->next !=NULL)
+{
+    current=current->next;
+    current->next=head;
+    head->prev=current;
+    
+    head= nthNode->next;
+    head->prev=NULL;
+    nthNode->next = NULL;
+}
+
